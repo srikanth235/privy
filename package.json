@@ -1,0 +1,39 @@
+{
+  "name": "privy-vscode-root",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "prepare": "husky install",
+    "build-all": "pnpm nx run-many --target=build",
+    "build-extension": "pnpm nx run vscode:build",
+    "test": "pnpm nx run extension:test",
+    "test-watch": "pnpm nx run extension:test-watch",
+    "package": "pnpm nx run vscode:package",
+    "deploy:vscode": "pnpm nx run vscode:publish-vscode",
+    "deploy:ovsx": "pnpm nx run vscode:publish-ovsx"
+  },
+  "private": true,
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
+    "@vscode/vsce": "2.16.0",
+    "esbuild": "0.16.10",
+    "eslint": "^8.32.0",
+    "eslint-config-prettier": "8.6.0",
+    "husky": "^8.0.0",
+    "lint-staged": "13.1.0",
+    "nx": "15.4.1",
+    "ovsx": "0.8.0",
+    "prettier": "2.8.3",
+    "typescript": "4.9.4",
+    "vitest": "0.28.3"
+  },
+  "workspaces": [
+    "app/*",
+    "lib/*"
+  ],
+  "dependencies": {
+    "pnpm": "^8.13.1"
+  }
+}

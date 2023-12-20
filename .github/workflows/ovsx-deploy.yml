@@ -1,0 +1,31 @@
+name: Open VSX Deploy
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build & deploy to Open VSX
+        run: pnpm deploy:ovsx -p ${{ secrets.OVSX_ACCESS_TOKEN }}
+        env:
+          NODE_OPTIONS: "--max_old_space_size=8192"

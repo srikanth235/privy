@@ -1,0 +1,451 @@
+{
+  "publisher": "Privy",
+  "name": "privy-vscode",
+  "version": "0.1.5",
+  "displayName": "Privy - Your private coding assistant",
+  "description": "Chat with code, explain code, generate tests, find bugs, etc.",
+  "keywords": [
+    "ai",
+    "llama.cpp",
+    "mistral",
+    "chatgpt",
+    "gpt",
+    "openai",
+    "codex",
+    "copilot",
+    "code explanation"
+  ],
+  "categories": [
+    "Machine Learning",
+    "Programming Languages",
+    "Linters",
+    "Formatters",
+    "Data Science",
+    "Education",
+    "Testing"
+  ],
+  "icon": "media/extension-icon.png",
+  "galleryBanner": {
+    "color": "#000000",
+    "theme": "dark"
+  },
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "engines": {
+    "node": ">=18",
+    "vscode": "^1.72.0"
+  },
+  "homepage": "https://github.com/srikanth235/privy",
+  "repository": "https://github.com/srikanth235/privy",
+  "bugs": "https://github.com/srikanth235/privy/issues",
+  "extensionKind": [
+    "workspace"
+  ],
+  "main": "./extension/dist/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "privy.enterOpenAIApiKey",
+        "category": "Privy",
+        "title": "Enter OpenAI API key"
+      },
+      {
+        "command": "privy.clearOpenAIApiKey",
+        "category": "Privy",
+        "title": "Clear OpenAI API key"
+      },
+      {
+        "command": "privy.startChat",
+        "title": "Start Chat 💬",
+        "category": "Privy",
+        "icon": "$(comment-discussion)"
+      },
+      {
+        "command": "privy.editCode",
+        "title": "Edit Code 🖊️",
+        "category": "Privy",
+        "icon": "$(edit)"
+      },
+      {
+        "command": "privy.explainCode",
+        "title": "Explain Code 💬",
+        "category": "Privy",
+        "icon": "$(comment-discussion)"
+      },
+      {
+        "command": "privy.generateCode",
+        "title": "Generate Code 🪄",
+        "category": "Privy",
+        "icon": "$(wand)"
+      },
+      {
+        "command": "privy.generateUnitTest",
+        "title": "Generate Unit Test 🪄",
+        "category": "Privy",
+        "icon": "$(beaker)"
+      },
+      {
+        "command": "privy.diagnoseErrors",
+        "title": "Diagnose Errors 💬",
+        "category": "Privy",
+        "icon": "$(search-fuzzy)"
+      },
+      {
+        "command": "privy.findBugs",
+        "title": "Find Bugs 💬",
+        "category": "Privy",
+        "icon": "$(bug)"
+      },
+      {
+        "command": "privy.startCustomChat",
+        "title": "Start Custom Chat… 💬",
+        "category": "Privy",
+        "icon": "$(comment-draft)"
+      },
+      {
+        "command": "privy.touchBar.startChat",
+        "category": "Privy",
+        "title": "💬"
+      },
+      {
+        "command": "privy.showChatPanel",
+        "title": "Show Chat Panel 💬",
+        "category": "Privy",
+        "icon": "$(comment-discussion)"
+      },
+      {
+        "command": "privy.getStarted",
+        "title": "Get Started",
+        "category": "Privy",
+        "icon": "$(question)"
+      },
+      {
+        "command": "privy.reloadTemplates",
+        "title": "Reload Templates",
+        "category": "Privy",
+        "icon": "$(sync)"
+      },
+      {
+        "command": "privy.showLogs",
+        "title": "Show Logs",
+        "category": "Privy",
+        "icon": "$(output)"
+      }
+    ],
+    "configuration": {
+      "title": "Privy",
+      "properties": {
+        "privy.syntaxHighlighting.useVisualStudioCodeColors": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "Use the Visual Studio Code Theme colors for syntax highlighting in the diff viewer. Might not work with all themes. Only applies to newly opened diffs.",
+          "scope": "application"
+        },
+        "privy.indexRepository.enabled": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "Enable the command to index your repository and give more context to the AI model. Experimental.",
+          "scope": "application"
+        },
+        "privy.action.editCode.showInEditorContextMenu": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
+          "scope": "application"
+        },
+        "privy.action.startChat.showInEditorContextMenu": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
+          "scope": "application"
+        },
+        "privy.action.explainCode.showInEditorContextMenu": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
+          "scope": "application"
+        },
+        "privy.action.findBugs.showInEditorContextMenu": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
+          "scope": "application"
+        },
+        "privy.action.generateUnitTest.showInEditorContextMenu": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
+          "scope": "application"
+        },
+        "privy.action.diagnoseErrors.showInEditorContextMenu": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
+          "scope": "application"
+        },
+        "privy.action.startCustomChat.showInEditorContextMenu": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
+          "scope": "application"
+        },
+        "privy.logger.level": {
+          "type": "string",
+          "default": "info",
+          "enum": [
+            "debug",
+            "info",
+            "warning",
+            "error"
+          ],
+          "enumDescriptions": [
+            "Show all logs",
+            "Show all logs except the debug ones",
+            "Only show warnings and errors",
+            "Only show errors"
+          ],
+          "markdownDescription": "Specify the verbosity of logs that will appear in 'Privy: Show Logs'.",
+          "scope": "application"
+        },
+        "privy.providerBaseUrl": {
+          "type": "string",
+          "default": "http://localhost:11434/",
+          "markdownDescription": "Specify the URL to the provider.",
+          "scope": "application"
+        },
+        "privy.provider": {
+          "type": "string",
+          "default": "Ollama",
+          "enum": [
+            "llamafile",
+            "llama.cpp",
+            "Ollama",
+            "OpenAI"
+          ],
+          "enumDescriptions": [
+            "If you are running LLM with this self-contained binary",
+            "If you are running llama.cpp server from source",
+            "One of the fastest ways to get started with local models on Mac/Linux",
+            "If you prefer gpt-4, gp-3.5-turbo or other models"
+          ]
+        },
+        "privy.model": {
+          "type": "string",
+          "default": "Mistral (7B)",
+          "enum": [
+            "Mistral (7B)",
+            "CodeLlama Instruct (7B)",
+            "gpt-3.5-turbo",
+            "gpt-3.5-turbo-16k",
+            "gpt-3.5-turbo-1106",
+            "gpt-4",
+            "gpt-4-32k",
+            "gpt-4-1106-preview"
+          ],
+          "enumDescriptions": [
+            "A 7b parameter base model created by Mistral AI, very competent for code generation and other tasks. ",
+            "A model from Meta, fine-tuned for code generation and conversation",
+            "OpenAI GPT-3.5-turbo: 4k context window. Faster, less expensive model. Less accurate.",
+            "OpenAI GPT-3.5-turbo: 16k context window. Faster, less expensive model. Less accurate.",
+            "OpenAI GPT-3.5-turbo: 16k context window. Latest 3.5 model. Faster, less expensive. Less accurate.",
+            "OpenAI GPT-4: 8k context window. Expensive, slow model. More accurate.",
+            "OpenAI GPT-4: 32k context window. Expensive, slow model. More accurate.",
+            "OpenAI GPT-4: 128k context window. Latest model. Expensive (but cheaper than 32k), slow model. More accurate."
+          ],
+          "markdownDescription": "Select the AI model that you want to use.",
+          "scope": "application"
+        }
+      }
+    },
+    "keybindings": [
+      {
+        "command": "privy.startChat",
+        "when": "isMac",
+        "key": "Ctrl+Cmd+c"
+      },
+      {
+        "command": "privy.startChat",
+        "when": "!isMac",
+        "key": "Ctrl+Alt+c"
+      },
+      {
+        "command": "privy.editCode",
+        "when": "isMac",
+        "key": "Ctrl+Cmd+e"
+      },
+      {
+        "command": "privy.editCode",
+        "when": "!isMac",
+        "key": "Ctrl+Alt+e"
+      },
+      {
+        "command": "privy.generateCode",
+        "when": "isMac",
+        "key": "Ctrl+Cmd+g"
+      },
+      {
+        "command": "privy.generateCode",
+        "when": "!isMac",
+        "key": "Ctrl+Alt+g"
+      }
+    ],
+    "submenus": [
+      {
+        "label": "Privy",
+        "id": "privy.submenu"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "privy.startChat",
+          "when": "view == privy.chat",
+          "group": "navigation@1"
+        },
+        {
+          "command": "privy.getStarted",
+          "when": "view == privy.chat",
+          "group": "navigation@2"
+        }
+      ],
+      "touchBar": [
+        {
+          "command": "privy.touchBar.startChat",
+          "group": "privy"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "privy.touchBar.startChat",
+          "when": "false"
+        }
+      ],
+      "editor/context": [
+        {
+          "submenu": "privy.submenu",
+          "group": "0_privy"
+        }
+      ],
+      "privy.submenu": [
+        {
+          "command": "privy.startChat",
+          "group": "privy",
+          "when": "config.privy.action.startChat.showInEditorContextMenu && editorHasSelection"
+        },
+        {
+          "command": "privy.explainCode",
+          "group": "privy",
+          "when": "config.privy.action.explainCode.showInEditorContextMenu && editorHasSelection"
+        },
+        {
+          "command": "privy.findBugs",
+          "group": "privy",
+          "when": "config.privy.action.findBugs.showInEditorContextMenu && editorHasSelection"
+        },
+        {
+          "command": "privy.generateUnitTest",
+          "group": "privy",
+          "when": "config.privy.action.generateUnitTest.showInEditorContextMenu && editorHasSelection"
+        },
+        {
+          "command": "privy.diagnoseErrors",
+          "group": "privy",
+          "when": "config.privy.action.diagnoseErrors.showInEditorContextMenu && editorHasSelection"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "privy",
+          "title": "Privy",
+          "icon": "media/sidebar-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "privy": [
+        {
+          "id": "privy.chat",
+          "name": "Chat",
+          "type": "webview"
+        }
+      ]
+    },
+    "walkthroughs": [
+      {
+        "id": "privy",
+        "title": "Privy",
+        "description": "Your AI Chat Assistant in Visual Studio Code",
+        "steps": [
+          {
+            "id": "setup",
+            "title": "Setup Privy",
+            "description": "Ensure LLM is running locally before getting started.",
+            "media": {
+              "markdown": "walkthrough/setup.md"
+            }
+          },
+          {
+            "id": "chat",
+            "title": "AI Chat",
+            "description": "Chat with Privy about your code and software development topics.",
+            "media": {
+              "markdown": "walkthrough/chat.md"
+            }
+          },
+          {
+            "id": "explain-code",
+            "title": "Explain Code",
+            "description": "Chat with Privy about your code and software development topics.",
+            "media": {
+              "markdown": "walkthrough/explain-code.md"
+            }
+          },
+          {
+            "id": "generate-unit-test",
+            "title": "Generate Unit Test",
+            "description": "Chat with Privy about your code and software development topics.",
+            "media": {
+              "markdown": "walkthrough/generate-unit-test.md"
+            }
+          },
+          {
+            "id": "find-bugs",
+            "title": "Find Bugs",
+            "description": "Chat with Privy about your code and software development topics.",
+            "media": {
+              "markdown": "walkthrough/find-bugs.md"
+            }
+          },
+          {
+            "id": "diagnose-errors",
+            "title": "Diagnose Errors",
+            "description": "Chat with Privy about your code and software development topics.",
+            "media": {
+              "markdown": "walkthrough/diagnose-errors.md"
+            }
+          },
+          {
+            "id": "tips-and-tricks",
+            "title": "Tips and Tricks",
+            "description": "How to get the most out of Privy.",
+            "media": {
+              "markdown": "walkthrough/tips-and-tricks.md"
+            }
+          },
+          {
+            "id": "project",
+            "title": "Project",
+            "description": "Learn more about our open source project.",
+            "media": {
+              "markdown": "walkthrough/project.md"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
