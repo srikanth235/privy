@@ -5,7 +5,7 @@
 Privy is a [Visual Studio Code extension](https://code.visualstudio.com/api). It has two main components:
 
 - The extension itself, which is the main entry point for the extension. It contains the extension static and logic.
-- The sidebar webview, which is a iframe that runs in the sidebar. It renders the UI and forwards user input to the extension.
+- The sidebar webview, which is an iframe that runs in the sidebar. It renders the UI and forwards user input to the extension.
 
 Visual Studio Code initializes the Privy extension on load. The extension then sets up callback for e.g. the registered commands and initializes the internal structure. The webview is loaded by Visual Studio Code when it is first opened.
 
