@@ -34,9 +34,10 @@ You can install Privy extension from the Visual Studio Code Marketplace or from 
 
 Please set the following options in the **settings** for Privy extension.
 
-- **privy.model**: Select the LLM that you want to use. Supports Mistral and CodeLLama. Experimental support for GPT-3.5-Turbo and GPT-4.
-- **privy.provider**: Pick the platform that is being used for running LLMs locally. There is support for using OpenAI, but this will affect the privacy aspects of the solution. The default is `Ollama`.
-- **privy.providerUrl**: The URL of the platform that is being used for running LLMs locally. The default is `http://localhost:11434`.
+- **privy.provider**(`required`): Pick the platform that is being used for running LLMs locally. There is support for using OpenAI, but this will affect the privacy aspects of the solution. The default is `Ollama`.
+- **privy.providerUrl**(`required`): The URL of the platform that is being used for running LLMs locally. The default is `http://localhost:11434`.
+- **privy.model**: Select the LLM that you want to use. Currently, supports Mistral and CodeLLama. If you want to use other LLMs, please select `custom` and configure `privy.customModel` accordingly.
+- **privy.customModel**: If you want to pick any other models running on your Ollama, please input their name.
 
 # Features
 
@@ -166,3 +167,13 @@ To help you get your feet wet and become familiar with our contribution process,
 
 [contributing]: https://github.com/srikanth235/privy/blob/master/CONTRIBUTING.md
 [good-first-issues]: https://github.com/srikanth235/privy/labels/good%20first%20issue
+
+## ⭐️ Star History
+
+<a href="https://star-history.com/#ise-uiuc/magicoder&Timeline">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=srikanth235/privy&type=Timeline&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=srikanth235/privy&type=Timeline" />
+    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=srikanth235/privy&type=Timeline" />
+  </picture>
+</a>

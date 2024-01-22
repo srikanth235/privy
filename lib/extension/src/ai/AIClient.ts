@@ -20,8 +20,6 @@ function getProviderBaseUrl(): string {
   let defaultUrl = "http://localhost:8080/";
   if (getProvider() === "Ollama") {
     defaultUrl = "http://localhost:11434";
-  } else if (getProvider() === "OpenAI") {
-    defaultUrl = "https://api.openai.com/v1/";
   }
   return (
     vscode.workspace
@@ -34,17 +32,12 @@ function getProviderBaseUrl(): string {
 
 function getModel() {
   return z
-    .enum([
-      "gpt-4",
-      "gpt-4-32k",
-      "gpt-4-1106-preview",
-      "gpt-3.5-turbo",
-      "gpt-3.5-turbo-16k",
-      "gpt-3.5-turbo-1106",
-      "Mistral (7B)",
-      "CodeLlama Instruct (7B)",
-    ])
+    .enum(["mistral:instruct", "codellama:instruct", "custom"])
     .parse(vscode.workspace.getConfiguration("privy").get("model"));
+}
+
+function getCustomModel(): string {
+  return vscode.workspace.getConfiguration("privy").get("customModel", "");
 }
 
 function getProvider() {
@@ -69,27 +62,11 @@ export class AIClient {
   }
 
   private async getProviderApiConfiguration() {
-    const apiKey = await this.apiKeyManager.getOpenAIApiKey();
-
     if (getProvider().startsWith("llama")) {
       return new LlamaCppApiConfiguration({ baseUrl: getProviderBaseUrl() });
     }
 
-    if (getProvider() === "Ollama") {
-      return ollama.Api({ baseUrl: getProviderBaseUrl() });
-    }
-
-    if (apiKey == undefined) {
-      throw new Error(
-        "No OpenAI API key found. " +
-          "Please enter your OpenAI API key with the 'Privy: Enter OpenAI API key' command."
-      );
-    }
-
-    return openai.Api({
-      baseUrl: getProviderBaseUrl(),
-      apiKey,
-    });
+    return ollama.Api({ baseUrl: getProviderBaseUrl() });
   }
 
   async getTextStreamingModel({
@@ -115,25 +92,10 @@ export class AIClient {
         .withTextPromptTemplate(Llama2Prompt.instruction());
     }
 
-    if (provider === "Ollama") {
-      return ollama
-        .ChatTextGenerator({
-          api: await this.getProviderApiConfiguration(),
-          model:
-            getModel() === "CodeLlama Instruct (7B)" ? "codellama" : "mistral",
-        })
-        .withInstructionPrompt();
-    }
-    return openai
+    return ollama
       .ChatTextGenerator({
         api: await this.getProviderApiConfiguration(),
-        // @ts-ignore
-        model: modelConfiguration,
-        maxGenerationTokens: maxTokens,
-        stopSequences: stop,
-        temperature,
-        frequencyPenalty: 0,
-        presencePenalty: 0,
+        model: getModel() === "custom" ? getCustomModel() : getModel(),
       })
       .withInstructionPrompt();
   }
