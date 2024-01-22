@@ -137,60 +137,6 @@
     "configuration": {
       "title": "Privy",
       "properties": {
-        "privy.syntaxHighlighting.useVisualStudioCodeColors": {
-          "type": "boolean",
-          "default": false,
-          "markdownDescription": "Use the Visual Studio Code Theme colors for syntax highlighting in the diff viewer. Might not work with all themes. Only applies to newly opened diffs.",
-          "scope": "application"
-        },
-        "privy.indexRepository.enabled": {
-          "type": "boolean",
-          "default": false,
-          "markdownDescription": "Enable the command to index your repository and give more context to the AI model. Experimental.",
-          "scope": "application"
-        },
-        "privy.action.editCode.showInEditorContextMenu": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
-          "scope": "application"
-        },
-        "privy.action.startChat.showInEditorContextMenu": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
-          "scope": "application"
-        },
-        "privy.action.explainCode.showInEditorContextMenu": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
-          "scope": "application"
-        },
-        "privy.action.findBugs.showInEditorContextMenu": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
-          "scope": "application"
-        },
-        "privy.action.generateUnitTest.showInEditorContextMenu": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
-          "scope": "application"
-        },
-        "privy.action.diagnoseErrors.showInEditorContextMenu": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
-          "scope": "application"
-        },
-        "privy.action.startCustomChat.showInEditorContextMenu": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
-          "scope": "application"
-        },
         "privy.logger.level": {
           "type": "string",
           "default": "info",
@@ -207,55 +153,116 @@
             "Only show errors"
           ],
           "markdownDescription": "Specify the verbosity of logs that will appear in 'Privy: Show Logs'.",
-          "scope": "application"
-        },
-        "privy.providerBaseUrl": {
-          "type": "string",
-          "default": "http://localhost:11434/",
-          "markdownDescription": "Specify the URL to the provider.",
-          "scope": "application"
+          "scope": "application",
+          "order": 1
         },
         "privy.provider": {
           "type": "string",
           "default": "Ollama",
           "enum": [
-            "llamafile",
-            "llama.cpp",
             "Ollama",
-            "OpenAI"
+            "llamafile",
+            "llama.cpp"
           ],
           "enumDescriptions": [
-            "If you are running LLM with this self-contained binary",
-            "If you are running llama.cpp server from source",
             "One of the fastest ways to get started with local models on Mac/Linux",
-            "If you prefer gpt-4, gp-3.5-turbo or other models"
-          ]
+            "If you are running LLM with this self-contained binary",
+            "If you are running llama.cpp server from source"
+          ],
+          "order": 2
+        },
+        "privy.providerBaseUrl": {
+          "type": "string",
+          "default": "http://localhost:11434/",
+          "markdownDescription": "Specify the URL to the provider.",
+          "scope": "application",
+          "order": 3
         },
         "privy.model": {
           "type": "string",
-          "default": "Mistral (7B)",
+          "default": "mistral:instruct",
           "enum": [
-            "Mistral (7B)",
-            "CodeLlama Instruct (7B)",
-            "gpt-3.5-turbo",
-            "gpt-3.5-turbo-16k",
-            "gpt-3.5-turbo-1106",
-            "gpt-4",
-            "gpt-4-32k",
-            "gpt-4-1106-preview"
+            "mistral:instruct",
+            "codellama:instruct",
+            "custom"
           ],
           "enumDescriptions": [
             "A 7b parameter base model created by Mistral AI, very competent for code generation and other tasks. ",
             "A model from Meta, fine-tuned for code generation and conversation",
-            "OpenAI GPT-3.5-turbo: 4k context window. Faster, less expensive model. Less accurate.",
-            "OpenAI GPT-3.5-turbo: 16k context window. Faster, less expensive model. Less accurate.",
-            "OpenAI GPT-3.5-turbo: 16k context window. Latest 3.5 model. Faster, less expensive. Less accurate.",
-            "OpenAI GPT-4: 8k context window. Expensive, slow model. More accurate.",
-            "OpenAI GPT-4: 32k context window. Expensive, slow model. More accurate.",
-            "OpenAI GPT-4: 128k context window. Latest model. Expensive (but cheaper than 32k), slow model. More accurate."
+            "For Ollama, use this for custom models that are not listed above."
           ],
           "markdownDescription": "Select the AI model that you want to use.",
-          "scope": "application"
+          "scope": "application",
+          "order": 4
+        },
+        "privy.customModel": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Enter the name of Ollama model to use. Only applies if you selected 'custom' above.",
+          "order": 5
+        },
+        "privy.syntaxHighlighting.useVisualStudioCodeColors": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "Use the Visual Studio Code Theme colors for syntax highlighting in the diff viewer. Might not work with all themes. Only applies to newly opened diffs.",
+          "scope": "application",
+          "order": 6
+        },
+        "privy.indexRepository.enabled": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "Enable the command to index your repository and give more context to the AI model. Experimental.",
+          "scope": "application",
+          "order": 7
+        },
+        "privy.action.editCode.showInEditorContextMenu": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
+          "scope": "application",
+          "order": 8
+        },
+        "privy.action.startChat.showInEditorContextMenu": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
+          "scope": "application",
+          "order": 9
+        },
+        "privy.action.explainCode.showInEditorContextMenu": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
+          "scope": "application",
+          "order": 10
+        },
+        "privy.action.findBugs.showInEditorContextMenu": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
+          "scope": "application",
+          "order": 11
+        },
+        "privy.action.generateUnitTest.showInEditorContextMenu": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
+          "scope": "application",
+          "order": 12
+        },
+        "privy.action.diagnoseErrors.showInEditorContextMenu": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
+          "scope": "application",
+          "order": 13
+        },
+        "privy.action.startCustomChat.showInEditorContextMenu": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
+          "scope": "application",
+          "order": 14
         }
       }
     },
