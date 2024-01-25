@@ -22,6 +22,7 @@ Some of the popular LLMs that we recommend are:
 
 - [Mistral](https://mistral.ai/)
 - [CodeLLama](https://github.com/facebookresearch/codellama)
+- [DeepSeek Coder](https://github.com/deepseek-ai/DeepSeek-Coder)
 
 ## Quick Install
 

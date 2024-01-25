@@ -2,5 +2,21 @@ module.exports = {
   trailingComma: "es5",
   tabWidth: 2,
   semi: true,
-  singleQuote: false
+  singleQuote: false,
+  arrowParens: "always",
+  bracketSameLine: false,
+  bracketSpacing: true,
+  experimentalTernaries: false,
+  jsxSingleQuote: false,
+  quoteProps: "as-needed",
+  singleAttributePerLine: false,
+  htmlWhitespaceSensitivity: "css",
+  vueIndentScriptAndStyle: false,
+  proseWrap: "preserve",
+  insertPragma: false,
+  printWidth: 80,
+  requirePragma: false,
+  useTabs: false,
+  embeddedLanguageFormatting: "auto",
+  spaceBeforeFunctionParen: false
 };

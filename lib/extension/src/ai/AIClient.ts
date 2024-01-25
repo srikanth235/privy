@@ -1,5 +1,4 @@
 import {
-  Llama2Prompt,
   OpenAITextEmbeddingResponse,
   InstructionPrompt,
   TextStreamingModel,
@@ -9,7 +8,6 @@ import {
   ollama,
   openai,
   streamText,
-  MistralInstructPrompt,
 } from "modelfusion";
 import * as vscode from "vscode";
 import { z } from "zod";
@@ -30,20 +28,31 @@ function getProviderBaseUrl(): string {
   );
 }
 
-function getModel() {
-  return z
+function getModel(): string {
+  let model = z
     .enum(["mistral:instruct", "codellama:instruct", "custom"])
     .parse(vscode.workspace.getConfiguration("privy").get("model"));
-}
-
-function getCustomModel(): string {
-  return vscode.workspace.getConfiguration("privy").get("customModel", "");
+  if (model === "custom") {
+    return vscode.workspace.getConfiguration("privy").get("customModel", "");
+  }
+  return model;
 }
 
 function getProvider() {
   return z
     .enum(["llamafile", "llama.cpp", "Ollama", "OpenAI"])
     .parse(vscode.workspace.getConfiguration("privy").get("provider"));
+}
+
+function getPromptTemplate() {
+  const model = getModel();
+  if (model.startsWith("mistral")) {
+    return ollama.prompt.Mistral;
+  } else if (model.startsWith("deepseek")) {
+    return ollama.prompt.Text;
+  }
+
+  return ollama.prompt.Llama2;
 }
 
 export class AIClient {
@@ -78,24 +87,29 @@ export class AIClient {
     stop?: string[] | undefined;
     temperature?: number | undefined;
   }): Promise<TextStreamingModel<InstructionPrompt>> {
-    const modelConfiguration = getModel();
     const provider = getProvider();
 
     if (provider.startsWith("llama")) {
       return llamacpp
-        .TextGenerator({
+        .CompletionTextGenerator({
           api: await this.getProviderApiConfiguration(),
+          // TODO the prompt format needs to be configurable for non-Llama2 models
+          promptTemplate: llamacpp.prompt.Llama2,
           maxGenerationTokens: maxTokens,
           stopSequences: stop,
           temperature,
         })
-        .withTextPromptTemplate(Llama2Prompt.instruction());
+        .withInstructionPrompt();
     }
 
     return ollama
-      .ChatTextGenerator({
+      .CompletionTextGenerator({
         api: await this.getProviderApiConfiguration(),
-        model: getModel() === "custom" ? getCustomModel() : getModel(),
+        promptTemplate: getPromptTemplate(),
+        model: getModel(),
+        maxGenerationTokens: maxTokens,
+        stopSequences: stop,
+        temperature,
       })
       .withInstructionPrompt();
   }
@@ -112,28 +126,29 @@ export class AIClient {
     temperature?: number | undefined;
   }) {
     this.logger.log(["--- Start prompt ---", prompt, "--- End prompt ---"]);
-
-    return streamText(
-      await this.getTextStreamingModel({ maxTokens, stop, temperature }),
-      { instruction: prompt }
-    );
+    return streamText({
+      model: await this.getTextStreamingModel({ maxTokens, stop, temperature }),
+      prompt: {
+        instruction: prompt,
+      },
+    });
   }
 
   async generateEmbedding({ input }: { input: string }) {
     try {
-      const { embedding, response } = await embed(
-        openai.TextEmbedder({
+      const { embedding, rawResponse } = await embed({
+        model: openai.TextEmbedder({
           api: await this.getProviderApiConfiguration(),
           model: "text-embedding-ada-002",
         }),
-        input,
-        { fullResponse: true }
-      );
+        value: input,
+        fullResponse: true,
+      });
 
       return {
         type: "success" as const,
         embedding,
-        totalTokenCount: (response as OpenAITextEmbeddingResponse).usage
+        totalTokenCount: (rawResponse as OpenAITextEmbeddingResponse).usage
           .total_tokens,
       };
     } catch (error: any) {
