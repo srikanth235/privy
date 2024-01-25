@@ -67,13 +67,6 @@ Developer: {{content}}
 {{/if}}
 {{/each}}
 
-## Task
-Write a response that continues the conversation.
-Stay focused on current developer request.
-Consider the possibility that there might not be a solution.
-Ask for clarification if the message does not make sense or more input is needed.
-Omit any links.
-Include code snippets (using Markdown) and examples where appropriate.
 
 ## Response
 Bot:
