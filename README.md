@@ -1,7 +1,7 @@
 <div align="center">
   <h1><b>💬 Privy</b></h1>
   <p>
-    <strong>A privacy-first coding assistant.</strong>
+    <strong>A privacy based alternative to GitHub co-pilot.</strong>
   </p>
   <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"/>
   <a href="https://twitter.com/getprivydev"  style="text-decoration: none; outline: none"><img src="https://img.shields.io/twitter/url/https/twitter.com/getprivydev.svg?style=social&label=%20%40getprivydev" alt="Twitter: @getprivydev"/></a>

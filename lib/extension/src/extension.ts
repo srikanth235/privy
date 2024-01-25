@@ -66,14 +66,6 @@ export const activate = async (context: vscode.ExtensionContext) => {
 
   context.subscriptions.push(
     vscode.window.registerWebviewViewProvider("privy.chat", chatPanel),
-    vscode.commands.registerCommand(
-      "privy.enterOpenAIApiKey",
-      apiKeyManager.enterOpenAIApiKey.bind(apiKeyManager)
-    ),
-    vscode.commands.registerCommand("privy.clearOpenAIApiKey", async () => {
-      await apiKeyManager.clearOpenAIApiKey();
-      vscode.window.showInformationMessage("OpenAI API key cleared.");
-    }),
 
     vscode.commands.registerCommand("privy.startConversation", (templateId) =>
       chatController.createConversation(templateId)
@@ -138,6 +130,12 @@ export const activate = async (context: vscode.ExtensionContext) => {
       await vscode.commands.executeCommand("workbench.action.openWalkthrough", {
         category: `Privy.privy-vscode#privy`,
       });
+    }),
+    vscode.commands.registerCommand("privy.openSettings", async () => {
+      await vscode.commands.executeCommand(
+        "workbench.action.openSettings",
+        `@ext:privy.privy-vscode`
+      );
     }),
     vscode.commands.registerCommand("privy.reloadTemplates", async () => {
       await conversationTypesProvider.loadConversationTypes();

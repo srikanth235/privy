@@ -2,7 +2,7 @@
   "publisher": "Privy",
   "name": "privy-vscode",
   "version": "0.1.5",
-  "displayName": "Privy - Your private coding assistant",
+  "displayName": "Privy - A privacy based alternative to GitHub co-pilot. ",
   "description": "Chat with code, explain code, generate tests, find bugs, etc.",
   "keywords": [
     "ai",
@@ -46,16 +46,6 @@
   ],
   "contributes": {
     "commands": [
-      {
-        "command": "privy.enterOpenAIApiKey",
-        "category": "Privy",
-        "title": "Enter OpenAI API key"
-      },
-      {
-        "command": "privy.clearOpenAIApiKey",
-        "category": "Privy",
-        "title": "Clear OpenAI API key"
-      },
       {
         "command": "privy.startChat",
         "title": "Start Chat 💬",
@@ -120,6 +110,12 @@
         "title": "Get Started",
         "category": "Privy",
         "icon": "$(question)"
+      },
+      {
+        "command": "privy.openSettings",
+        "title": "Open Settings",
+        "category": "Privy",
+        "icon": "$(settings)"
       },
       {
         "command": "privy.reloadTemplates",
@@ -312,9 +308,14 @@
           "group": "navigation@1"
         },
         {
-          "command": "privy.getStarted",
+          "command": "privy.openSettings",
           "when": "view == privy.chat",
           "group": "navigation@2"
+        },
+        {
+          "command": "privy.getStarted",
+          "when": "view == privy.chat",
+          "group": "navigation@3"
         }
       ],
       "touchBar": [
