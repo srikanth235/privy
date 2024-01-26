@@ -1,12 +1,13 @@
 {
   "publisher": "Privy",
   "name": "privy-vscode",
-  "version": "0.1.5",
-  "displayName": "Privy - A privacy based alternative to GitHub co-pilot. ",
+  "version": "0.1.6",
+  "displayName": "Privy - AI coding assistant like GitHub Copilot that runs locally. ",
   "description": "Chat with code, explain code, generate tests, find bugs, etc.",
   "keywords": [
     "ai",
     "llama.cpp",
+    "ollama",
     "mistral",
     "chatgpt",
     "gpt",
