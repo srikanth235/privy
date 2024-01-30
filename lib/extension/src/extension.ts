@@ -58,6 +58,7 @@ export const activate = async (context: vscode.ExtensionContext) => {
       return conversationTypesProvider.getConversationType(id);
     },
     basicChatTemplateId: "chat-en",
+    logger: vscodeLogger,
   });
 
   chatPanel.onDidReceiveMessage(

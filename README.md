@@ -1,9 +1,12 @@
 <div align="center">
   <h1><b>💬 Privy</b></h1>
   <p>
-    <strong>A privacy based alternative to GitHub co-pilot.</strong>
+    <strong>An open-source alternative to GitHub copilot that runs locally.</strong>
   </p>
   <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"/>
+  <img src="https://img.shields.io/github/v/release/srikanth235/privy" alt="GitHub: Releases"/>
+  <img src="https://img.shields.io/github/issues/srikanth235/privy" alt="GitHub Issues"/>
+  <img src="https://img.shields.io/github/stars/srikanth235/privy" alt="GitHub Stars"/>
   <a href="https://twitter.com/getprivydev"  style="text-decoration: none; outline: none"><img src="https://img.shields.io/twitter/url/https/twitter.com/getprivydev.svg?style=social&label=%20%40getprivydev" alt="Twitter: @getprivydev"/></a>
   <a href="https://discord.gg/wykDxGyUHA"  style="text-decoration: none; outline: none">
   <img src="https://dcbadge.vercel.app/api/server/vAcVQ7XhR2?style=flat&compact=true" alt="Discord"/>

@@ -7,6 +7,7 @@ import { resolveVariables } from "../conversation/input/resolveVariables";
 import { DiffEditorManager } from "../diff/DiffEditorManager";
 import { ChatModel } from "./ChatModel";
 import { ChatPanel } from "./ChatPanel";
+import { Logger } from "../logger";
 
 export class ChatController {
   private readonly chatPanel: ChatPanel;
@@ -18,6 +19,7 @@ export class ChatController {
   private readonly diffEditorManager: DiffEditorManager;
   private readonly basicChatTemplateId: string;
   private readonly generateConversationId: () => string;
+  private readonly logger: Logger;
 
   constructor({
     chatPanel,
@@ -26,6 +28,7 @@ export class ChatController {
     getConversationType,
     diffEditorManager,
     basicChatTemplateId,
+    logger,
   }: {
     chatPanel: ChatPanel;
     chatModel: ChatModel;
@@ -33,6 +36,7 @@ export class ChatController {
     getConversationType: (id: string) => ConversationType | undefined;
     diffEditorManager: DiffEditorManager;
     basicChatTemplateId: string;
+    logger: Logger;
   }) {
     this.chatPanel = chatPanel;
     this.chatModel = chatModel;
@@ -40,7 +44,7 @@ export class ChatController {
     this.getConversationType = getConversationType;
     this.diffEditorManager = diffEditorManager;
     this.basicChatTemplateId = basicChatTemplateId;
-
+    this.logger = logger;
     this.generateConversationId = util.createNextId({
       prefix: "conversation-",
     });
@@ -148,6 +152,7 @@ export class ChatController {
         updateChatPanel: this.updateChatPanel.bind(this),
         diffEditorManager: this.diffEditorManager,
         initVariables: variableValues,
+        logger: this.logger,
       });
 
       if (result.type === "unavailable") {

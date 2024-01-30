@@ -8,6 +8,7 @@ import { DiffData } from "./DiffData";
 import { resolveVariables } from "./input/resolveVariables";
 import { executeRetrievalAugmentation } from "./retrieval-augmentation/executeRetrievalAugmentation";
 import { Prompt, RubberduckTemplate } from "./template/RubberduckTemplate";
+import { Logger } from "../logger";
 
 Handlebars.registerHelper({
   eq: (v1, v2) => v1 === v2,
@@ -38,6 +39,7 @@ export class Conversation {
   private diffEditor: DiffEditor | undefined;
   private readonly diffData: DiffData | undefined;
   private readonly diffEditorManager: DiffEditorManager;
+  private readonly logger: Logger;
 
   constructor({
     id,
@@ -47,6 +49,7 @@ export class Conversation {
     template,
     diffEditorManager,
     diffData,
+    logger,
   }: {
     id: string;
     initVariables: Record<string, unknown>;
@@ -55,6 +58,7 @@ export class Conversation {
     template: RubberduckTemplate;
     diffEditorManager: DiffEditorManager;
     diffData: DiffData | undefined;
+    logger: Logger;
   }) {
     this.id = id;
     this.ai = ai;
@@ -65,6 +69,7 @@ export class Conversation {
     this.template = template;
     this.diffEditorManager = diffEditorManager;
     this.diffData = diffData;
+    this.logger = logger;
 
     this.state =
       template.initialMessage == null
@@ -200,6 +205,7 @@ export class Conversation {
 
       // handle full completion (to allow for cleanup):
       await this.handleCompletion(responseUntilNow, prompt);
+      this.logger.log("Response: " + responseUntilNow + "\n");
     } catch (error: any) {
       console.log(error);
       await this.setError(error?.message ?? "Unknown error");

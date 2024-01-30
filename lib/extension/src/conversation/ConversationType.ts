@@ -4,6 +4,7 @@ import { DiffEditorManager } from "../diff/DiffEditorManager";
 import { Conversation } from "./Conversation";
 import { DiffData } from "./DiffData";
 import { RubberduckTemplate } from "./template/RubberduckTemplate";
+import { Logger } from "../logger";
 
 export type CreateConversationResult =
   | {
@@ -56,12 +57,14 @@ export class ConversationType {
     updateChatPanel,
     initVariables,
     diffEditorManager,
+    logger,
   }: {
     conversationId: string;
     ai: AIClient;
     updateChatPanel: () => Promise<void>;
     initVariables: Record<string, unknown>;
     diffEditorManager: DiffEditorManager;
+    logger: Logger;
   }): Promise<CreateConversationResult> {
     return {
       type: "success",
@@ -73,6 +76,7 @@ export class ConversationType {
         template: this.template,
         diffEditorManager,
         diffData: await this.getDiffData(),
+        logger: logger,
       }),
       shouldImmediatelyAnswer: this.template.initialMessage != null,
     };
