@@ -8,6 +8,7 @@ import { ConversationTypesProvider } from "./conversation/ConversationTypesProvi
 import { DiffEditorManager } from "./diff/DiffEditorManager";
 import { indexRepository } from "./index/indexRepository";
 import { getVSCodeLogLevel, LoggerUsingVSCodeOutput } from "./logger";
+import { AutoCompleteProvider } from "./autocomplete/AutoCompleteProvider";
 
 export const activate = async (context: vscode.ExtensionContext) => {
   const apiKeyManager = new ApiKeyManager({
@@ -152,7 +153,12 @@ export const activate = async (context: vscode.ExtensionContext) => {
         ai: ai,
         outputChannel: indexOutputChannel,
       });
-    })
+    }),
+
+    vscode.languages.registerInlineCompletionItemProvider(
+      { pattern: "**" },
+      new AutoCompleteProvider({ ai: ai, logger: vscodeLogger })
+    )
   );
 
   return Object.freeze({

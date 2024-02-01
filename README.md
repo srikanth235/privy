@@ -17,15 +17,15 @@
 
 If you haven't done already, please pick one of the following platforms to run LLM of your choice on your system **locally**.
 
-- [Ollama](https://github.com/jmorganca/ollama)
-- [llamafile](https://github.com/Mozilla-Ocho/llamafile)
-- [llama.cpp](https://github.com/ggerganov/llama.cpp)
+- [Ollama](https://github.com/jmorganca/ollama) (Highly Recommended)
+- [llamafile](https://github.com/Mozilla-Ocho/llamafile) (Experimental)
+- [llama.cpp](https://github.com/ggerganov/llama.cpp) (Experimental)
 
 Some of the popular LLMs that we recommend are:
 
-- [Mistral](https://mistral.ai/)
-- [CodeLLama](https://github.com/facebookresearch/codellama)
 - [DeepSeek Coder](https://github.com/deepseek-ai/DeepSeek-Coder)
+- [CodeLLama](https://github.com/facebookresearch/codellama)
+- [Mistral](https://mistral.ai/)
 
 ## Quick Install
 
@@ -40,12 +40,19 @@ Please set the following options in the **settings** for Privy extension.
 
 - **privy.provider**(`required`): Pick the platform that is being used for running LLMs locally. There is support for using OpenAI, but this will affect the privacy aspects of the solution. The default is `Ollama`.
 - **privy.providerUrl**(`required`): The URL of the platform that is being used for running LLMs locally. The default is `http://localhost:11434`.
+- **privy.autocomplete.mode**: Use this setting for enabling/disabling autocompletion feature.
+- **privy.autocomplete.model**: Input the name of local Ollama model that you want to use for autocompletion. Supported formats are DeepSeek Coder, LLama & Stable Code. Our recommendation is deepseek-coder:1.3b-base as it requires least amount of VRAM. You can customize based on your hardware setup.
+- **privy.autocomplete.debounceWait**: Use this for setting the time gap before triggering the next completion in milliseconds. Default is 300 ms.
 - **privy.model**: Select the LLM that you want to use. Currently, supports Mistral and CodeLLama. If you want to use other LLMs, please select `custom` and configure `privy.customModel` accordingly.
 - **privy.customModel**: If you want to pick any other models running on your Ollama, please input their name.
 
 # Features
 
-[AI Chat](#ai-chat) | [Explain Code](#explain-code) | [Generate Tests](#generate-tests) | [Find Bugs](#find-bugs) | [Diagnose Errors](#diagnose-errors)
+[Autcompletion](#autocompletion) |[AI Chat](#ai-chat) | [Explain Code](#explain-code) | [Generate Tests](#generate-tests) | [Find Bugs](#find-bugs) | [Diagnose Errors](#diagnose-errors)
+
+## Autocompletion
+
+Privy automatically understands the code context and shows some code recommendations based on it's understanding. Accept or reject them as you wish.
 
 ## AI Chat
 

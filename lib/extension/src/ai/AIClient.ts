@@ -8,6 +8,7 @@ import {
   ollama,
   openai,
   streamText,
+  generateText,
 } from "modelfusion";
 import * as vscode from "vscode";
 import { z } from "zod";
@@ -28,7 +29,7 @@ function getProviderBaseUrl(): string {
   );
 }
 
-function getModel(): string {
+function getChatModel(): string {
   let model = z
     .enum(["mistral:instruct", "codellama:instruct", "custom"])
     .parse(vscode.workspace.getConfiguration("privy").get("model"));
@@ -36,6 +37,11 @@ function getModel(): string {
     return vscode.workspace.getConfiguration("privy").get("customModel", "");
   }
   return model;
+}
+function getAutoCompleteModel(): string {
+  return vscode.workspace
+    .getConfiguration("privy.autocomplete")
+    .get("model", "");
 }
 
 function getProvider() {
@@ -45,7 +51,7 @@ function getProvider() {
 }
 
 function getPromptTemplate() {
-  const model = getModel();
+  const model = getChatModel();
   if (model.startsWith("mistral")) {
     return ollama.prompt.Mistral;
   } else if (model.startsWith("deepseek")) {
@@ -68,6 +74,14 @@ export class AIClient {
   }) {
     this.apiKeyManager = apiKeyManager;
     this.logger = logger;
+  }
+
+  public getModel(feature: string = "chat"): string {
+    if (feature != "chat") {
+      this.logger.debug(["Autcomplete Model: ", getAutoCompleteModel()]);
+      return getAutoCompleteModel();
+    }
+    return getChatModel();
   }
 
   private async getProviderApiConfiguration() {
@@ -106,7 +120,7 @@ export class AIClient {
       .CompletionTextGenerator({
         api: await this.getProviderApiConfiguration(),
         promptTemplate: getPromptTemplate(),
-        model: getModel(),
+        model: this.getModel(),
         maxGenerationTokens: maxTokens,
         stopSequences: stop,
         temperature,
@@ -131,6 +145,30 @@ export class AIClient {
       prompt: {
         instruction: prompt,
       },
+    });
+  }
+  async generateText({
+    prompt,
+    maxTokens = 2048,
+    stop,
+    temperature = 0,
+  }: {
+    prompt: string;
+    maxTokens?: number;
+    stop?: string[] | undefined;
+    temperature?: number | undefined;
+  }): Promise<string> {
+    this.logger.debug(["--- Start prompt ---", prompt, "--- End prompt ---"]);
+    return generateText({
+      model: ollama
+        .CompletionTextGenerator({
+          model: this.getModel("autocomplete"),
+          temperature: temperature,
+          maxGenerationTokens: maxTokens,
+          stopSequences: stop,
+        })
+        .withTextPrompt(), // use text prompt style
+      prompt: prompt,
     });
   }
 
