@@ -1,7 +1,7 @@
 {
   "publisher": "Privy",
   "name": "privy-vscode",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "displayName": "Privy - AI coding Autocomplete and chat that runs locally. ",
   "description": "Get code suggestions, chat with code, explain code, generate tests, find bugs, etc.",
   "keywords": [

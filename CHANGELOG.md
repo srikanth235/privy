@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0 (2024-02-01)
+
+### Added
+
+- Added support for inline completions.
+
 ## 0.1.6 (2024-01-26)
 
 ### Added
