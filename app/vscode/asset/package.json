@@ -2,10 +2,12 @@
   "publisher": "Privy",
   "name": "privy-vscode",
   "version": "0.1.6",
-  "displayName": "Privy - AI coding assistant like GitHub Copilot that runs locally. ",
-  "description": "Chat with code, explain code, generate tests, find bugs, etc.",
+  "displayName": "Privy - AI coding Autocomplete and chat that runs locally. ",
+  "description": "Get code suggestions, chat with code, explain code, generate tests, find bugs, etc.",
   "keywords": [
     "ai",
+    "autocomplete",
+    "code completion",
     "llama.cpp",
     "ollama",
     "mistral",
@@ -23,7 +25,8 @@
     "Formatters",
     "Data Science",
     "Education",
-    "Testing"
+    "Testing",
+    "Snippets"
   ],
   "icon": "media/extension-icon.png",
   "galleryBanner": {
@@ -175,6 +178,31 @@
           "scope": "application",
           "order": 3
         },
+        "privy.autocomplete.mode": {
+          "type": "string",
+          "default": "enabled",
+          "enum": [
+            "disabled",
+            "enabled"
+          ],
+          "enumDescriptions": [
+            "If you don't want to use autocomplete functionality.",
+            "If you prefer to enable the autocomplete functionality. "
+          ],
+          "order": 4
+        },
+        "privy.autocomplete.model": {
+          "type": "string",
+          "default": "deepseek-coder:1.3b-base",
+          "markdownDescription": "Enter the name of Ollama model to use for autocomplete.",
+          "order": 5
+        },
+        "privy.autocomplete.debounceWait": {
+          "type": "number",
+          "default": 300,
+          "markdownDescription": "The time gap before triggering the next completion in milliseconds",
+          "order": 6
+        },
         "privy.model": {
           "type": "string",
           "default": "mistral:instruct",
@@ -188,78 +216,78 @@
             "A model from Meta, fine-tuned for code generation and conversation",
             "For Ollama, use this for custom models that are not listed above."
           ],
-          "markdownDescription": "Select the AI model that you want to use.",
+          "markdownDescription": "Select the AI model that you want to chat with.",
           "scope": "application",
-          "order": 4
+          "order": 7
         },
         "privy.customModel": {
           "type": "string",
           "default": "",
           "markdownDescription": "Enter the name of Ollama model to use. Only applies if you selected 'custom' above.",
-          "order": 5
+          "order": 8
         },
         "privy.syntaxHighlighting.useVisualStudioCodeColors": {
           "type": "boolean",
           "default": false,
           "markdownDescription": "Use the Visual Studio Code Theme colors for syntax highlighting in the diff viewer. Might not work with all themes. Only applies to newly opened diffs.",
           "scope": "application",
-          "order": 6
+          "order": 9
         },
         "privy.indexRepository.enabled": {
           "type": "boolean",
           "default": false,
           "markdownDescription": "Enable the command to index your repository and give more context to the AI model. Experimental.",
           "scope": "application",
-          "order": 7
+          "order": 10
         },
         "privy.action.editCode.showInEditorContextMenu": {
           "type": "boolean",
           "default": true,
           "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
           "scope": "application",
-          "order": 8
+          "order": 11
         },
         "privy.action.startChat.showInEditorContextMenu": {
           "type": "boolean",
           "default": true,
           "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
           "scope": "application",
-          "order": 9
+          "order": 12
         },
         "privy.action.explainCode.showInEditorContextMenu": {
           "type": "boolean",
           "default": true,
           "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
           "scope": "application",
-          "order": 10
+          "order": 13
         },
         "privy.action.findBugs.showInEditorContextMenu": {
           "type": "boolean",
           "default": true,
           "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
           "scope": "application",
-          "order": 11
+          "order": 14
         },
         "privy.action.generateUnitTest.showInEditorContextMenu": {
           "type": "boolean",
           "default": true,
           "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
           "scope": "application",
-          "order": 12
+          "order": 15
         },
         "privy.action.diagnoseErrors.showInEditorContextMenu": {
           "type": "boolean",
           "default": true,
           "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
           "scope": "application",
-          "order": 13
+          "order": 17
         },
         "privy.action.startCustomChat.showInEditorContextMenu": {
           "type": "boolean",
           "default": true,
           "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
           "scope": "application",
-          "order": 14
+          "order": 17
         }
       }
     },
