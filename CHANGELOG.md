@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.1 (2024-02-02)
+
+### Fixed
+
+- Fixing cold start issues in chat panel.
+- Disabling poorly designed edit and custom chat functionalities.
+
 ## 0.2.0 (2024-02-01)
 
 ### Added
