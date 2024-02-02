@@ -2,7 +2,7 @@ import * as vscode from "vscode";
 import { loadConversationFromFile } from "./loadRubberduckTemplateFromFile";
 import { RubberduckTemplateLoadResult } from "./RubberduckTemplateLoadResult";
 
-const TEMPLATE_GLOB = ".rubberduck/template/**/*.rdt.md";
+const TEMPLATE_GLOB = ".privy/template/**/*.rdt.md";
 
 export async function loadRubberduckTemplatesFromWorkspace(): Promise<
   Array<RubberduckTemplateLoadResult>

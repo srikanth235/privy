@@ -57,12 +57,6 @@
         "icon": "$(comment-discussion)"
       },
       {
-        "command": "privy.editCode",
-        "title": "Edit Code 🖊️",
-        "category": "Privy",
-        "icon": "$(edit)"
-      },
-      {
         "command": "privy.explainCode",
         "title": "Explain Code 💬",
         "category": "Privy",
@@ -82,21 +76,15 @@
       },
       {
         "command": "privy.diagnoseErrors",
-        "title": "Diagnose Errors 💬",
+        "title": "Diagnose Errors",
         "category": "Privy",
         "icon": "$(search-fuzzy)"
       },
       {
         "command": "privy.findBugs",
-        "title": "Find Bugs 💬",
+        "title": "Find Bugs",
         "category": "Privy",
         "icon": "$(bug)"
-      },
-      {
-        "command": "privy.startCustomChat",
-        "title": "Start Custom Chat… 💬",
-        "category": "Privy",
-        "icon": "$(comment-draft)"
       },
       {
         "command": "privy.touchBar.startChat",
@@ -240,13 +228,6 @@
           "scope": "application",
           "order": 10
         },
-        "privy.action.editCode.showInEditorContextMenu": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
-          "scope": "application",
-          "order": 11
-        },
         "privy.action.startChat.showInEditorContextMenu": {
           "type": "boolean",
           "default": true,
@@ -281,13 +262,6 @@
           "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
           "scope": "application",
           "order": 17
-        },
-        "privy.action.startCustomChat.showInEditorContextMenu": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
-          "scope": "application",
-          "order": 17
         }
       }
     },
@@ -301,16 +275,6 @@
         "command": "privy.startChat",
         "when": "!isMac",
         "key": "Ctrl+Alt+c"
-      },
-      {
-        "command": "privy.editCode",
-        "when": "isMac",
-        "key": "Ctrl+Cmd+e"
-      },
-      {
-        "command": "privy.editCode",
-        "when": "!isMac",
-        "key": "Ctrl+Alt+e"
       },
       {
         "command": "privy.generateCode",

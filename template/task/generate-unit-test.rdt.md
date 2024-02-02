@@ -75,7 +75,6 @@ The programming language is {{language}}.
 
 ## Response
 
-
 ```
 
 ### Response Prompt

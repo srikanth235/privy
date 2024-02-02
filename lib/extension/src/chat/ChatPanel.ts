@@ -3,11 +3,10 @@ import * as vscode from "vscode";
 import { ApiKeyManager } from "../ai/ApiKeyManager";
 import { WebviewContainer } from "../webview/WebviewContainer";
 import { ChatModel } from "./ChatModel";
+import { Logger } from "../logger";
 
 function getConfigSurfacePromptForOpenAIPlus(): boolean {
-  return vscode.workspace
-    .getConfiguration("privy.openAI")
-    .get<boolean>("surfacePromptForPlus", false);
+  return false;
 }
 
 export class ChatPanel implements vscode.WebviewViewProvider {
@@ -25,17 +24,21 @@ export class ChatPanel implements vscode.WebviewViewProvider {
   private apiKeyManager: ApiKeyManager;
 
   private state: webviewApi.PanelState;
+  private readonly logger: Logger;
 
   constructor({
     extensionUri,
     apiKeyManager,
     hasOpenAIApiKey,
+    logger,
   }: {
     readonly extensionUri: vscode.Uri;
     apiKeyManager: ApiKeyManager;
     /** Needed since retrieving it is an async operation */
     hasOpenAIApiKey: boolean;
+    logger: Logger;
   }) {
+    this.logger = logger;
     this.extensionUri = extensionUri;
     this.apiKeyManager = apiKeyManager;
 
@@ -107,7 +110,7 @@ export class ChatPanel implements vscode.WebviewViewProvider {
     }
 
     const surfacePromptForOpenAIPlus = getConfigSurfacePromptForOpenAIPlus();
-    const hasOpenAIApiKey = await this.apiKeyManager.hasOpenAIApiKey();
+    const hasOpenAIApiKey = false;
     this.state = {
       type: "chat",
       selectedConversationId: model.selectedConversationId,

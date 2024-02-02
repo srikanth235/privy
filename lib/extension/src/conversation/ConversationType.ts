@@ -66,6 +66,7 @@ export class ConversationType {
     diffEditorManager: DiffEditorManager;
     logger: Logger;
   }): Promise<CreateConversationResult> {
+    logger.debug(`creating conversation ${this.id}:${conversationId}`);
     return {
       type: "success",
       conversation: new Conversation({

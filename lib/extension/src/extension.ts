@@ -33,6 +33,7 @@ export const activate = async (context: vscode.ExtensionContext) => {
     extensionUri: context.extensionUri,
     apiKeyManager,
     hasOpenAIApiKey,
+    logger: vscodeLogger,
   });
 
   const chatModel = new ChatModel();
