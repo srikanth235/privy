@@ -1,6 +1,14 @@
 # Changelog
 
+## 0.2.3 (2024-02-03)
+
+### Fixed
+
+- Changing the release number to match VSCode requirements.
+
 ## 0.2.2.1 (2024-02-03)
+
+### Fixed
 
 - Downgrading modelfusion library as it broke the plugin.
 
