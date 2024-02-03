@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.2 (2024-02-03)
+
+### Fixed
+
+- Added system prompt for better prompt performance.
+- Bumped up modelfusion library version.
+
 ## 0.2.1 (2024-02-02)
 
 ### Fixed
