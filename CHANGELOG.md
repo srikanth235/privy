@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.2.1 (2024-02-03)
+
+- Downgrading modelfusion library as it broke the plugin.
+
 ## 0.2.2 (2024-02-03)
 
 ### Fixed
