@@ -96,7 +96,7 @@ export async function indexRepository({
               embedding: embeddingResult.embedding,
             });
 
-            tokenCount += embeddingResult.totalTokenCount;
+            tokenCount += embeddingResult?.totalTokenCount ?? 0;
           } catch (error) {
             console.error(error);
 

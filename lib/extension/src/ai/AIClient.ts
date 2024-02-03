@@ -78,7 +78,7 @@ export class AIClient {
 
   public getModel(feature: string = "chat"): string {
     if (feature != "chat") {
-      this.logger.debug(["Autcomplete Model: ", getAutoCompleteModel()]);
+      this.logger.debug(["Autocomplete Model: ", getAutoCompleteModel()]);
       return getAutoCompleteModel();
     }
     return getChatModel();
@@ -143,6 +143,7 @@ export class AIClient {
     return streamText({
       model: await this.getTextStreamingModel({ maxTokens, stop, temperature }),
       prompt: {
+        system: "You are a Bot who is here to assist Developer.",
         instruction: prompt,
       },
     });
@@ -187,7 +188,7 @@ export class AIClient {
         type: "success" as const,
         embedding,
         totalTokenCount: (rawResponse as OpenAITextEmbeddingResponse).usage
-          .total_tokens,
+          ?.total_tokens,
       };
     } catch (error: any) {
       console.log(error);

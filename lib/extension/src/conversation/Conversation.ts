@@ -205,7 +205,7 @@ export class Conversation {
 
       // handle full completion (to allow for cleanup):
       await this.handleCompletion(responseUntilNow, prompt);
-      this.logger.log("Response: " + responseUntilNow + "\n");
+      this.logger.debug("Response: " + responseUntilNow + "\n");
     } catch (error: any) {
       console.log(error);
       await this.setError(error?.message ?? "Unknown error");
