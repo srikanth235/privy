@@ -21,7 +21,7 @@ export default function CodeBlock ({ node, inline, className, children, ...props
       <div style={{ position: 'relative' }}>
         <SyntaxHighlighter
           style={codeStyle}
-          language={match[1]}
+          language={match ? match[1] : 'auto'}
           className={classes}
           PreTag="div"
           {...props}
