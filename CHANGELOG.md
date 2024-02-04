@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.4 (2024-02-03)
+
+### Added
+
+- Support for auto-detection of language in code snippets.
+
 ## 0.2.3 (2024-02-03)
 
 ### Fixed
