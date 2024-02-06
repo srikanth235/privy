@@ -13,7 +13,17 @@
   </a>
 </div>
 
-## Pre-requisites
+## :eyes: See it in action
+
+#### Real time code completion
+
+<img src="https://raw.githubusercontent.com/srikanth235/privy/master/app/vscode/asset/media/autocompletion.gif" width="760"/>
+
+#### Chat with AI about your code
+
+<img src="https://raw.githubusercontent.com/srikanth235/privy/master/app/vscode/asset/media/chat.gif" width="760"/>
+
+## :hammer_and_wrench: Pre-requisites
 
 If you haven't done already, please pick one of the following platforms to run LLM of your choice on your system **locally**.
 
@@ -27,14 +37,14 @@ Some of the popular LLMs that we recommend are:
 - [CodeLLama](https://github.com/facebookresearch/codellama)
 - [Mistral](https://mistral.ai/)
 
-## Quick Install
+## :rocket: Quick Install
 
 You can install Privy extension from the Visual Studio Code Marketplace or from the Open VSX Registry.
 
 - [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=privy.privy-vscode)
 - [Open VSX Registry](https://open-vsx.org/extension/Privy/privy-vscode)
 
-## Configuration Options
+## :gear: Configuration Options
 
 Please set the following options in the **settings** for Privy extension.
 
@@ -43,70 +53,19 @@ Please set the following options in the **settings** for Privy extension.
 - **privy.autocomplete.mode**: Use this setting for enabling/disabling autocompletion feature.
 - **privy.autocomplete.model**: Input the name of local Ollama model that you want to use for autocompletion. Supported formats are DeepSeek Coder, LLama & Stable Code. We have chosen deepseek-coder:1.3b-base as it requires least amount of VRAM. You can customize based on your hardware setup.
 - **privy.autocomplete.debounceWait**: Use this for setting the time gap before triggering the next completion in milliseconds. Default is 300 ms.
-- **privy.model**: Select the LLM that you want to use. Currently, supports Mistral and CodeLLama. If you want to use other LLMs, please select `custom` and configure `privy.customModel` accordingly.
+- **privy.model**: Select the LLM that you want to chat with. Currently, supports DeepSeek, Mistral and CodeLLama. If you want to use other LLMs, please select `custom` and configure `privy.customModel` accordingly.
 - **privy.customModel**: If you want to pick any other models running on your Ollama, please input their name.
 
-# Features
+# :sparkles: Key Features
 
-[Autcompletion](#autocompletion) |[AI Chat](#ai-chat) | [Explain Code](#explain-code) | [Generate Tests](#generate-tests) | [Find Bugs](#find-bugs) | [Diagnose Errors](#diagnose-errors)
+- :+1: Open Source
+- :closed_lock_with_key: Privacy first
+- :rocket: Auto code completion
+- :robot: Copilot style chat
+- :speech_balloon: Threaded conversations
+- :man_technologist: Support for code explanation, unit tests, finding bugs, diagnosing errors etc
 
-## Autocompletion
-
-Privy automatically understands the code context and shows some code recommendations based on it's understanding. Accept or reject them as you wish.
-
-## AI Chat
-
-Chat with Privy about your code and software development topics. Privy knows the editor selection at the time of conversation start.
-
-1. You can start a chat using one of the following options:
-   1. Run the `Privy: Start Chat 💬` command from the command palette.
-   1. Select the `Privy > Start Chat 💬` entry in the editor context menu (right-click, requires selection).
-   1. Use the "Start new chat" button in the side panel.
-   1. Use the keyboard shortcut: `Ctrl + Cmd + C` (Mac) or `Ctrl + Alt + C` (Windows / Linux).
-   1. Press 💬 on the MacOS touch bar (if available).
-1. Ask a question in the new conversation thread in the Privy sidebar panel.
-
-## Explain Code
-
-Ask Privy to explain the selected code.
-
-1. Select the code that you want to have explained in the editor.
-1. Invoke the "Explain Code" command using one of the following options:
-   1. Run the `Privy: Explain Code 💬` command from the command palette.
-   1. Select the `Privy > Explain Code 💬` entry in the editor context menu (right-click).
-1. The explanations shows up in the Privy sidebar panel.
-
-## Generate Unit Test
-
-Generate a unit test for the selected code.
-
-1. Select a piece of code in the editor for which you want to generate a test case.
-2. Invoke the "Generate Unit Test" command using one of the following options:
-   1. Run the `Privy: Generate Unit Test 💬` command from the command palette.
-   1. Select the `Privy > Generate Unit Test 💬` entry in the editor context menu (right-click).
-3. The test case shows up in a new editor tab. You can refine it in the conversation panel.
-
-## Find Bugs
-
-Identify potential defects in your code.
-
-1. Select a piece of code that you want to check for bugs.
-2. Invoke the "Find Bugs" command using one of the following options:
-   1. Run the `Privy: Find Bugs 💬` command from the command palette.
-   1. Select the `Privy > Find Bugs 💬` entry in the editor context menu (right-click).
-3. Privy will show you a list of potential bugs in the chat window. You can refine it in the conversation panel.
-
-## Diagnose Errors
-
-Let Privy identify error causes and suggest fixes to fix compiler and linter errors faster.
-
-1. Select a piece of code in the editor that contains errors.
-2. Invoke the "Diagnose Errors" command using one of the following options:
-   1. Run the `Privy: Diagnose Errors 💬` command from the command palette.
-   1. Select the `Privy > Diagnose Errors 💬` entry in the editor context menu (right-click).
-3. A potential solution will be shown in the chat window. You can refine it in the conversation panel.
-
-# Tips and Tricks
+# :bulb: Tips and Tricks
 
 Understanding these concepts will help you get the most out of Privy.
 
@@ -122,11 +81,9 @@ Understanding these concepts will help you get the most out of Privy.
 - **Use different chat threads for different topics**.
   Shorter threads with specific topics will help Privy respond more accurately.
 
-## Credits
+## :handshake: Credits
 
-- [RubberDuck AI](https://github.com/rubberduck-ai/rubberduck-vscode) - This project is heavily inspired by RubberDuck AI's work, and we're indebted to them for building on top of it.
-
-## Contributors
+- [RubberDuck AI](https://github.com/rubberduck-ai/rubberduck-vscode) - This project is heavily inspired by RubberDuck AI's work, and we're indebted to them for building on top of it. The following is the list of contributors to this project and we extend our sincere gratitude to all of them.
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -164,7 +121,7 @@ Understanding these concepts will help you get the most out of Privy.
   </tbody>
 </table>
 
-## Code Contributions
+## :tada: Code Contributions
 
 ### [Contributing Guide][contributing]
 
@@ -179,7 +136,7 @@ To help you get your feet wet and become familiar with our contribution process,
 [contributing]: https://github.com/srikanth235/privy/blob/master/CONTRIBUTING.md
 [good-first-issues]: https://github.com/srikanth235/privy/labels/good%20first%20issue
 
-## ⭐️ Star History
+## :star: Star History
 
 <a href="https://star-history.com/#ise-uiuc/magicoder&Timeline">
   <picture>
