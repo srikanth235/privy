@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.5 (2024-02-06)
+
+### Fixed
+
+- Simplifying README content
+
 ## 0.2.4 (2024-02-03)
 
 ### Added
