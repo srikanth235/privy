@@ -13,7 +13,7 @@
   </a>
 </div>
 
-## :eyes: See it in action
+## 👀 See it in action
 
 #### Real time code completion
 
@@ -23,7 +23,7 @@
 
 <img src="https://raw.githubusercontent.com/srikanth235/privy/master/app/vscode/asset/media/chat.gif" width="760"/>
 
-## :hammer_and_wrench: Pre-requisites
+## 🛠️ Pre-requisites
 
 If you haven't done already, please pick one of the following platforms to run LLM of your choice on your system **locally**.
 
@@ -37,14 +37,14 @@ Some of the popular LLMs that we recommend are:
 - [CodeLLama](https://github.com/facebookresearch/codellama)
 - [Mistral](https://mistral.ai/)
 
-## :rocket: Quick Install
+## 🚀 Quick Install
 
 You can install Privy extension from the Visual Studio Code Marketplace or from the Open VSX Registry.
 
 - [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=privy.privy-vscode)
 - [Open VSX Registry](https://open-vsx.org/extension/Privy/privy-vscode)
 
-## :gear: Configuration Options
+## ⚙️ Configuration Options
 
 Please set the following options in the **settings** for Privy extension.
 
@@ -56,16 +56,16 @@ Please set the following options in the **settings** for Privy extension.
 - **privy.model**: Select the LLM that you want to chat with. Currently, supports DeepSeek, Mistral and CodeLLama. If you want to use other LLMs, please select `custom` and configure `privy.customModel` accordingly.
 - **privy.customModel**: If you want to pick any other models running on your Ollama, please input their name.
 
-# :sparkles: Key Features
+# ✨ Key Features
 
-- :+1: Open Source
-- :closed_lock_with_key: Privacy first
-- :rocket: Auto code completion
-- :robot: Copilot style chat
-- :speech_balloon: Threaded conversations
-- :man_technologist: Support for code explanation, unit tests, finding bugs, diagnosing errors etc
+- 👍 Open Source
+- 🔐 Privacy first
+- 🚀 Auto code completion
+- 🤖 Copilot style chat
+- 💬 Threaded conversations
+- 💻 Support for code explanation, unit tests, finding bugs, diagnosing errors etc
 
-# :bulb: Tips and Tricks
+# 💡 Tips and Tricks
 
 Understanding these concepts will help you get the most out of Privy.
 
@@ -81,7 +81,7 @@ Understanding these concepts will help you get the most out of Privy.
 - **Use different chat threads for different topics**.
   Shorter threads with specific topics will help Privy respond more accurately.
 
-## :handshake: Credits
+## 🤝 Credits
 
 - [RubberDuck AI](https://github.com/rubberduck-ai/rubberduck-vscode) - This project is heavily inspired by RubberDuck AI's work, and we're indebted to them for building on top of it. The following is the list of contributors to this project and we extend our sincere gratitude to all of them.
 
@@ -121,7 +121,7 @@ Understanding these concepts will help you get the most out of Privy.
   </tbody>
 </table>
 
-## :tada: Code Contributions
+## 🎉 Code Contributions
 
 ### [Contributing Guide][contributing]
 
