@@ -65,6 +65,13 @@ Please set the following options in the **settings** for Privy extension.
 - 💬 Threaded conversations
 - 💻 Support for code explanation, unit tests, finding bugs, diagnosing errors etc
 
+# ⌨️ Keyboard shortcuts
+
+| Shortcut (Mac)                                                    | Description                    |
+| ----------------------------------------------------------------- | ------------------------------ |
+| `Alt + \` (for Windows/Linux) or `Cmd + \` (for Mac)              | Trigger inline code completion |
+| `Ctrl + Alt + c` (for Windows/Linux) or `Ctrl + Cmd + c`(for Mac) | Start Chat                     |
+
 # 💡 Tips and Tricks
 
 Understanding these concepts will help you get the most out of Privy.

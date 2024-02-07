@@ -168,14 +168,16 @@
         },
         "privy.autocomplete.mode": {
           "type": "string",
-          "default": "enabled",
+          "default": "automatic",
           "enum": [
-            "disabled",
-            "enabled"
+            "automatic",
+            "manual",
+            "disabled"
           ],
           "enumDescriptions": [
-            "If you don't want to use autocomplete functionality.",
-            "If you prefer to enable the autocomplete functionality. "
+            "If you prefer to use the autocomplete functionality automatically. ",
+            "If you prefer to trigger manually. (Cmd + \\ for macs & Alt + \\ for others)",
+            "If you don't want to use autocomplete functionality."
           ],
           "order": 4
         },
@@ -266,6 +268,16 @@
       }
     },
     "keybindings": [
+      {
+        "key": "cmd+\\",
+        "command": "editor.action.inlineSuggest.trigger",
+        "when": "config.privy.autocomplete.mode === 'manual' && editorTextFocus && !editorHasSelection && !inlineSuggestionsVisible && isMac"
+      },
+      {
+        "key": "alt+\\",
+        "command": "editor.action.inlineSuggest.trigger",
+        "when": "config.privy.autocomplete.mode === 'manual' && editorTextFocus && !editorHasSelection && !inlineSuggestionsVisible && !isMac"
+      },
       {
         "command": "privy.startChat",
         "when": "isMac",
@@ -387,6 +399,14 @@
             "description": "Ensure LLM is running locally before getting started.",
             "media": {
               "markdown": "walkthrough/setup.md"
+            }
+          },
+          {
+            "id": "autocomplete",
+            "title": "Autocomplete",
+            "description": "Get suggestions from your LLM as and when you type.",
+            "media": {
+              "markdown": "walkthrough/autocomplete.md"
             }
           },
           {

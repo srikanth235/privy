@@ -7,7 +7,7 @@ import { AutoCompletePromptTemplateProvider } from "./AutoCompleteTemplateProvid
 export class AutoCompleteProvider
   implements vscode.InlineCompletionItemProvider
 {
-  private mode: "enabled" | "disabled" = "enabled";
+  private mode: "automatic" | "disabled" | "manual" = "automatic";
   private ai: AIClient;
   private readonly logger: Logger;
   private debouncer: NodeJS.Timeout | undefined;
@@ -43,7 +43,7 @@ export class AutoCompleteProvider
     } else {
       this.mode = vscode.workspace
         .getConfiguration("privy")
-        .get("autocomplete.mode", "enabled");
+        .get("autocomplete.mode", "automatic");
       this.debounceWait = vscode.workspace
         .getConfiguration("privy")
         .get("autocomplete.debounceWait", 300);
@@ -59,6 +59,13 @@ export class AutoCompleteProvider
     token: vscode.CancellationToken
   ): boolean {
     if (this.mode === "disabled") {
+      return true;
+    }
+    if (
+      context.triggerKind === vscode.InlineCompletionTriggerKind.Automatic &&
+      this.mode === "manual"
+    ) {
+      console.debug("Skip automatic trigger when triggerMode is manual.");
       return true;
     }
     if (
