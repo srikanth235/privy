@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.6 (2024-02-08)
+
+### Added
+
+- Enabling hotkey (`Cmd + c` for macs and `Alt + c` for Windows/Linux) for manually triggering code completions.
+
 ## 0.2.5 (2024-02-06)
 
 ### Fixed
