@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.7 (2024-02-10)
+
+### Fixed
+
+- Autocompletion now honors the Ollama provider url.
+
 ## 0.2.6 (2024-02-08)
 
 ### Added
