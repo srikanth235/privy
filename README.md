@@ -31,6 +31,8 @@ If you haven't done already, please pick one of the following platforms to run L
 - [llamafile](https://github.com/Mozilla-Ocho/llamafile) (Experimental)
 - [llama.cpp](https://github.com/ggerganov/llama.cpp) (Experimental)
 
+## 👍 LLM Recommendations
+
 Please note that you need to configure LLM for code completion and chat feature **separately**. Some of the popular LLMs that we recommend are as follows. Please pick the size (i.e. 1.3b, 7b, 13b or 34b) of the model based on your hardware capabilities.
 
 | Code Completion                            | Chat                                          | Links                                                                                                           |
