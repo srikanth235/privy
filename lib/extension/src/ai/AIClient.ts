@@ -78,7 +78,7 @@ export class AIClient {
 
   public getModel(feature: string = "chat"): string {
     if (feature != "chat") {
-      this.logger.debug(["Autocomplete Model: ", getAutoCompleteModel()]);
+      this.logger.log(["Autocomplete Model: ", getAutoCompleteModel()]);
       return getAutoCompleteModel();
     }
     return getChatModel();
@@ -128,6 +128,36 @@ export class AIClient {
       .withInstructionPrompt();
   }
 
+  async getTextGenerationModel({
+    maxTokens,
+    stop,
+    temperature = 0,
+  }: {
+    maxTokens: number;
+    stop?: string[] | undefined;
+    temperature?: number | undefined;
+  }) {
+    if (getProvider().startsWith("llama")) {
+      return llamacpp
+        .CompletionTextGenerator({
+          api: await this.getProviderApiConfiguration(),
+          maxGenerationTokens: maxTokens,
+          stopSequences: stop,
+          temperature,
+        })
+        .withTextPrompt();
+    }
+    return ollama
+      .CompletionTextGenerator({
+        api: await this.getProviderApiConfiguration(),
+        model: this.getModel("autocomplete"),
+        temperature: temperature,
+        maxGenerationTokens: maxTokens,
+        stopSequences: stop,
+      })
+      .withTextPrompt(); // use text prompt style
+  }
+
   async streamText({
     prompt,
     maxTokens,
@@ -159,16 +189,13 @@ export class AIClient {
     stop?: string[] | undefined;
     temperature?: number | undefined;
   }): Promise<string> {
-    this.logger.debug(["--- Start prompt ---", prompt, "--- End prompt ---"]);
+    this.logger.log(["--- Start prompt ---", prompt, "--- End prompt ---"]);
     return generateText({
-      model: ollama
-        .CompletionTextGenerator({
-          model: this.getModel("autocomplete"),
-          temperature: temperature,
-          maxGenerationTokens: maxTokens,
-          stopSequences: stop,
-        })
-        .withTextPrompt(), // use text prompt style
+      model: await this.getTextGenerationModel({
+        maxTokens,
+        stop,
+        temperature,
+      }),
       prompt: prompt,
     });
   }
