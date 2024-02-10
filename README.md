@@ -31,11 +31,13 @@ If you haven't done already, please pick one of the following platforms to run L
 - [llamafile](https://github.com/Mozilla-Ocho/llamafile) (Experimental)
 - [llama.cpp](https://github.com/ggerganov/llama.cpp) (Experimental)
 
-Some of the popular LLMs that we recommend are:
+Please note that you need to configure LLM for code completion and chat feature **separately**. Some of the popular LLMs that we recommend are as follows. Please pick the size (i.e. 1.3b, 7b, 13b or 34b) of the model based on your hardware capabilities.
 
-- [DeepSeek Coder](https://github.com/deepseek-ai/DeepSeek-Coder)
-- [CodeLLama](https://github.com/facebookresearch/codellama)
-- [Mistral](https://mistral.ai/)
+| Code Completion                            | Chat                                          | Links                                                                                                           |
+| ------------------------------------------ | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| deepseek-coder:{1.3b or 6.7b or 33b }-base | deepseek-coder:{1.3b or 6.7b or 33b}-instruct | [Ollama Tags](https://ollama.com/library/deepseek-coder), [Home](https://github.com/deepseek-ai/DeepSeek-Coder) |
+| codellama:{7b or 13b or 34b}-code          | codellama:{7b or 13b or 34b}-instruct         | [Ollama Tags](https://ollama.com/library/codellama), [Home](https://github.com/facebookresearch/codellama)      |
+|                                            | mistral:{7b}-instruct                         | [Ollama Tags](https://ollama.com/library/mistral), [Home](https://mistral.ai/)                                  |
 
 ## 🚀 Quick Install
 
