@@ -41,6 +41,8 @@ Please note that you need to configure LLM for code completion and chat feature 
 | codellama:{7b or 13b or 34b}-code          | codellama:{7b or 13b or 34b}-instruct         | [Ollama Tags](https://ollama.com/library/codellama), [Home](https://github.com/facebookresearch/codellama)      |
 |                                            | mistral:{7b}-instruct                         | [Ollama Tags](https://ollama.com/library/mistral), [Home](https://mistral.ai/)                                  |
 
+You can also pick a model by evaluating your local LLMs using [Benchllama](https://github.com/srikanth235/benchllama).
+
 ## 🚀 Quick Install
 
 You can install Privy extension from the Visual Studio Code Marketplace or from the Open VSX Registry.
