@@ -26,6 +26,7 @@ export type Language =
   | "ruby"
   | "sql"
   | "php"
+  | "perl"
   | "bat"
   | "shellscript";
 
@@ -200,6 +201,12 @@ export const languages: { [key in Language]: LanguageDescriptor } = {
       ".phpt",
     ],
     comment: { start: "//" },
+  },
+
+  perl: {
+    name: "Perl",
+    extensions: [".pl", ".pm", ".pod", ".t", ".PL"],
+    comment: { start: "#" },
   },
 
   bat: {
