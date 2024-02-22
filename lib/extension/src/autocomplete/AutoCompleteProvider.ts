@@ -148,7 +148,7 @@ export class AutoCompleteProvider
           prompt: prompt,
           stop: stop,
         });
-        this.logger.debug(["Response: ", response]);
+        this.logger.log(["Autocompletion response: ", response]);
         return resolve([
           {
             insertText: response,

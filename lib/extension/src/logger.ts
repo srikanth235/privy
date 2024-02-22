@@ -79,8 +79,9 @@ export class LoggerUsingVSCodeOutput implements Logger {
     const { lines, prefix, level } = options;
     if (!this.canLog(level)) return;
 
+    const timestamp = new Date().toISOString(); // Get current timestamp
     lines.forEach((line) => {
-      this.outputChannel.appendLine(`${prefix} ${line}`);
+      this.outputChannel.appendLine(`${timestamp} ${prefix} ${line}`);
     });
   }
 
