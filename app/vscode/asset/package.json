@@ -229,41 +229,6 @@
           "markdownDescription": "Enable the command to index your repository and give more context to the AI model. Experimental.",
           "scope": "application",
           "order": 10
-        },
-        "privy.action.startChat.showInEditorContextMenu": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
-          "scope": "application",
-          "order": 12
-        },
-        "privy.action.explainCode.showInEditorContextMenu": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
-          "scope": "application",
-          "order": 13
-        },
-        "privy.action.findBugs.showInEditorContextMenu": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
-          "scope": "application",
-          "order": 14
-        },
-        "privy.action.generateUnitTest.showInEditorContextMenu": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
-          "scope": "application",
-          "order": 15
-        },
-        "privy.action.diagnoseErrors.showInEditorContextMenu": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
-          "scope": "application",
-          "order": 17
         }
       }
     },
@@ -344,28 +309,23 @@
       "privy.submenu": [
         {
           "command": "privy.startChat",
-          "group": "privy",
-          "when": "config.privy.action.startChat.showInEditorContextMenu && editorHasSelection"
+          "group": "privy"
         },
         {
           "command": "privy.explainCode",
-          "group": "privy",
-          "when": "config.privy.action.explainCode.showInEditorContextMenu && editorHasSelection"
+          "group": "privy"
         },
         {
           "command": "privy.findBugs",
-          "group": "privy",
-          "when": "config.privy.action.findBugs.showInEditorContextMenu && editorHasSelection"
+          "group": "privy"
         },
         {
           "command": "privy.generateUnitTest",
-          "group": "privy",
-          "when": "config.privy.action.generateUnitTest.showInEditorContextMenu && editorHasSelection"
+          "group": "privy"
         },
         {
           "command": "privy.diagnoseErrors",
-          "group": "privy",
-          "when": "config.privy.action.diagnoseErrors.showInEditorContextMenu && editorHasSelection"
+          "group": "privy"
         }
       ]
     },
